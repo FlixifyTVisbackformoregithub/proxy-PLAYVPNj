@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLAYERVPN</title>
+    <title>Simple Web Proxy</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>PlayVPN</h1>
+        <h1>Web Proxy</h1>
         <div class="input-wrapper">
             <input type="text" id="url" placeholder="Enter URL here..." />
-            <button id="goButton">Search</button>
+            <button id="goButton">Go</button>
         </div>
         <iframe id="proxyFrame" src="" frameborder="0"></iframe>
     </div>
@@ -20,10 +20,10 @@
     <script>
         document.getElementById("goButton").onclick = function() {
             const urlInput = document.getElementById("url").value;
-            const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+            const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
 
             if (urlInput) {
-                document.getElementById("proxyFrame").src = proxyUrl + urlInput;
+                document.getElementById("proxyFrame").src = proxyUrl + encodeURIComponent(urlInput);
             } else {
                 alert("Please enter a URL.");
             } 
