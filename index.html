@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Proxy</title>
-    <style>
-        body { text-align: center; }
-        input { width: 300px; }
-        button { padding: 10px 20px; }
-        iframe { width: 80%; height: 80vh; border: none; }
-    </style>
+    <title>PLAYERVPN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Web Proxy</h1>
-    <input type="text" id="url" placeholder="Enter URL to visit..." />
-    <button id="goButton">Go</button>
-    <iframe id="proxyFrame" src=""></iframe>
+    <div class="container">
+        <h1>PlayVPN</h1>
+        <div class="input-wrapper">
+            <input type="text" id="url" placeholder="Enter URL here..." />
+            <button id="goButton">Search</button>
+        </div>
+        <iframe id="proxyFrame" src="" frameborder="0"></iframe>
+    </div>
 
     <script>
-        document.getElementById("goButton").addEventListener("click", function() {
-            const url = document.getElementById("url").value;
-            const proxyFrame = document.getElementById("proxyFrame");
-            proxyFrame.src = "/proxy?target=" + encodeURIComponent(url);
-        });
+        document.getElementById("goButton").onclick = function() {
+            const urlInput = document.getElementById("url").value;
+            const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+
+            if (urlInput) {
+                document.getElementById("proxyFrame").src = proxyUrl + urlInput;
+            } else {
+                alert("Please enter a URL.");
+            } 
+        };
     </script>
 </body>
 </html>
